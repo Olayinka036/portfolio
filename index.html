@@ -1,52 +1,13 @@
-<script type="text/javascript">
-        var gk_isXlsx = false;
-        var gk_xlsxFileLookup = {};
-        var gk_fileData = {};
-        function filledCell(cell) {
-          return cell !== '' && cell != null;
-        }
-        function loadFileData(filename) {
-        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
-            try {
-                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
-                var firstSheetName = workbook.SheetNames[0];
-                var worksheet = workbook.Sheets[firstSheetName];
-
-                // Convert sheet to JSON to filter blank rows
-                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
-                // Filter out blank rows (rows where all cells are empty, null, or undefined)
-                var filteredData = jsonData.filter(row => row.some(filledCell));
-
-                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
-                var headerRowIndex = filteredData.findIndex((row, index) =>
-                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
-                );
-                // Fallback
-                if (headerRowIndex === -1 || headerRowIndex > 25) {
-                  headerRowIndex = 0;
-                }
-
-                // Convert filtered JSON back to CSV
-                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
-                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
-                return csv;
-            } catch (e) {
-                console.error(e);
-                return "";
-            }
-        }
-        return gk_fileData[filename] || "";
-        }
-        </script><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Olayinka Oseni - Portfolio</title>
+    <title>Olayinka Oseni Yusuf - Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Open Sans', Open Sans, Open Sans;
+            font-family: 'Open Sans', Arial, sans-serif;
             margin: 0;
             padding: 0;
             background-color: white;
@@ -116,7 +77,7 @@
             margin-bottom: 1rem;
         }
         #projects h2 {
-            text-align: left;
+            text-align: center;
         }
         .project {
             display: flex;
@@ -228,9 +189,9 @@
 </head>
 <body>
     <header>
-        <img src="https://via.placeholder.com/150x150?text=Olayinka+Headshot" alt="Olayinka Oseni Yusuf in a black jacket and black roundneck with a blurred background">
+        <img src="https://raw.githubusercontent.com/olayinka036/olayinka036/main/Olayinka_Oseni.png" alt="Olayinka Oseni Yusuf in a black jacket and black roundneck with a blurred background">
         <div>
-            <h1>Olayinka Oseni </h1>
+            <h1>Olayinka Oseni Yusuf</h1>
             <p>Web Developer | Graphic Designer | IT Enthusiast</p>
         </div>
     </header>
@@ -243,71 +204,26 @@
     <div class="container">
         <div class="section" id="about">
             <h2>About Me</h2>
-            <p>Detail-oriented IT Officer with 4+ years of experience in WordPress design, graphic design, computer networking, and cPanel management. Currently completing a B.Sc. in Public Administration.</p>
-            <p>Skilled in delivering IT solutions and supporting project coordination for local and international clients. Proficient in remote collaboration tools and committed to enhancing organizational efficiency through technology and strategic administration.</p>
+            <p>I am an undergraduate pursuing a B.Sc. in Public Administration at the University of Lagos Distance Learning Institute, set to graduate in 2026. Passionate about IT, I specialize in WordPress website design, graphic design, computer networking, webmail management, and cPanel setup. I balance distance learning with freelance projects, delivering professional solutions for clients in Nigeria and beyond.</p>
+            <p>Based in Lagos, Nigeria, I am proficient in remote collaboration tools like Slack, Zoom, and Trello, and I am eager to contribute to innovative projects as an IT Officer or web developer.</p>
         </div>
         <div class="section" id="skills">
             <h2>Skills</h2>
             <div class="skills">
-                <span class="skill">Graphic Design</span>
                 <span class="skill">WordPress</span>
-                <span class="skill">cPanel Setup</span>
-                <span class="skill">Webmail Management</span>
-                <span class="skill">HTML/CSS</span>
+                <span class="skill">Graphic Design</span>
                 <span class="skill">Computer Networking</span>
-                <span class="skill">IT Support</span>
+                <span class="skill">Webmail Management</span>
+                <span class="skill">cPanel Setup</span>
+                <span class="skill">HTML/CSS</span>
+                <span class="skill">JavaScript</span>
                 <span class="skill">Remote Collaboration</span>
             </div>
         </div>
         <div class="section" id="projects">
             <h2>Projects</h2>
             <div class="project">
-                <img src="https://via.placeholder.com/200x150?text=BLM+Schools+Mockup" alt="BLM Schools WordPress homepage mockup with a school banner">
-                <div class="project-content">
-                    <h3>BLM Schools</h3>
-                    <p><strong>Homepage Description:</strong> The BLM Schools homepage opens with a vibrant banner of students in a classroom, with a "Learn More" button. The navigation menu includes About, Admissions, and Events. Sections below feature a welcome message from the principal, upcoming events with a calendar plugin, and a photo gallery of school activities. The design uses a bright, educational WordPress theme with blue and yellow tones.</p>
-                    <p><strong>About BLM Schools:</strong> BLM Schools is an educational institution in Nigeria dedicated to providing quality education from primary to secondary levels. The school emphasizes academic excellence, character development, and extracurricular activities to prepare students for future success.</p>
-                    <button onclick="window.open('http://blmschools.com.ng', '_blank')">View Project</button>
-                </div>
-            </div>
-            <div class="project">
-                <img src="https://via.placeholder.com/200x150?text=Palax+Solutions+Mockup" alt="Palax Solutions WordPress homepage mockup with a finance banner">
-                <div class="project-content">
-                    <h3>Palax Solutions</h3>
-                    <p><strong>Homepage Description:</strong> The Palax Solutions homepage features a professional banner with a financial chart graphic and a "Get Started" button. The navigation bar links to Services, Testimonials, and Contact. A services section highlights wealth management and advisory with icons, followed by client testimonials and a contact form. The design uses a corporate WordPress theme with green and white colors.</p>
-                    <p><strong>About Palax Solutions:</strong> Palax Solutions is a financial services firm offering innovative solutions in wealth management, investment advisory, and financial planning. The company focuses on delivering tailored strategies to help clients achieve their financial goals with integrity and expertise.</p>
-                    <button onclick="window.open('https://palaxsolutions.com', '_blank')">View Project</button>
-                </div>
-            </div>
-            <div class="project">
-                <img src="https://via.placeholder.com/200x150?text=Metrip+Mockup" alt="Metrip WordPress homepage mockup with a travel banner">
-                <div class="project-content">
-                    <h3>Metrip</h3>
-                    <p><strong>Homepage Description:</strong> The Metrip homepage showcases a stunning beach destination banner with a "Book Now" button. The navigation includes Destinations, Bookings, and About. Sections below feature popular destinations with image cards, a booking form powered by a WordPress plugin, and customer reviews. The design uses a travel-focused WordPress theme with blue and orange accents.</p>
-                    <p><strong>About Metrip:</strong> Metrip is a travel agency that curates personalized travel experiences, offering services like flight bookings, hotel reservations, and guided tours. The company aims to make travel seamless and memorable for clients worldwide.</p>
-                    <button onclick="window.open('https://metrip.me', '_blank')">View Project</button>
-                </div>
-            </div>
-            <div class="project">
-                <img src="https://via.placeholder.com/200x150?text=The+Himmel+Mockup" alt="The Himmel WordPress homepage mockup with an economics banner">
-                <div class="project-content">
-                    <h3>The Himmel</h3>
-                    <p><strong>Homepage Description:</strong> The Himmel homepage features a banner with a global economic map graphic and a "Read Latest Articles" button. The navigation bar links to Blog, Research, and About. A blog section displays recent posts with thumbnails, followed by a newsletter signup form and social media links. The design uses a minimal WordPress theme with blue and gray tones.</p>
-                    <p><strong>About The Himmel:</strong> The Himmel is a platform focused on economics, providing insightful articles, research, and analysis on global economic trends. It aims to educate and inform readers about financial systems and economic policies.</p>
-                    <button onclick="window.open('https://thehimmel.com', '_blank')">View Project</button>
-                </div>
-            </div>
-            <div class="project">
-                <img src="https://via.placeholder.com/200x150?text=SF+Protective+Services+Mockup" alt="SF Protective Services WordPress homepage mockup with a security banner">
-                <div class="project-content">
-                    <h3>SF Protective Services</h3>
-                    <p><strong>Homepage Description:</strong> The SF Protective Services homepage features a banner with a security guard image and a "Request a Quote" button. The navigation includes Services, Team, and Contact. Sections below highlight security services with icons, a team member showcase, and a contact form. The design uses a bold WordPress theme with black and yellow colors.</p>
-                    <p><strong>About SF Protective Services:</strong> SF Protective Services is a private security firm offering comprehensive security solutions, including armed and unarmed guards, surveillance, and risk assessments. The company prioritizes client safety and trust through professional services.</p>
-                    <button onclick="window.open('https://sf-protectiveservices.com', '_blank')">View Project</button>
-                </div>
-            </div>
-            <div class="project">
-                <img src="https://via.placeholder.com/200x150?text=Chelsea+Autos+Mockup" alt="Chelsea Autos WordPress homepage mockup with a car banner">
+                <img src="https://raw.githubusercontent.com/olayinka036/olayinka036/main/Chelsea Autos.png" alt="Chelsea Autos WordPress homepage mockup with a car banner">
                 <div class="project-content">
                     <h3>Chelsea Autos</h3>
                     <p><strong>Homepage Description:</strong> The Chelsea Autos homepage features a full-width banner showcasing a luxury car with a bold call-to-action button ("Explore Our Inventory"). The navigation bar includes links to Inventory, Financing, and Contact. A section highlights featured vehicles with images and prices, followed by customer testimonials and a contact form. The design uses a sleek, automotive theme with a black and red color scheme, typical of WordPress car dealership templates.</p>
@@ -316,7 +232,61 @@
                 </div>
             </div>
             <div class="project">
-                <img src="https://via.placeholder.com/200x150?text=Luna+Security+Ltd+Mockup" alt="Luna Security Ltd WordPress homepage mockup with a security banner">
+                <img src="https://raw.githubusercontent.com/olayinka036/olayinka036/main/BLM Schools.png" alt="BLM Schools WordPress homepage mockup with a school banner">
+                <div class="project-content">
+                    <h3>BLM Schools</h3>
+                    <p><strong>Homepage Description:</strong> The BLM Schools homepage opens with a vibrant banner of students in a classroom, with a "Learn More" button. The navigation menu includes About, Admissions, and Events. Sections below feature a welcome message from the principal, upcoming events with a calendar plugin, and a photo gallery of school activities. The design uses a bright, educational WordPress theme with blue and yellow tones.</p>
+                    <p><strong>About BLM Schools:</strong> BLM Schools is an educational institution in Nigeria dedicated to providing quality education from primary to secondary levels. The school emphasizes academic excellence, character development, and extracurricular activities to prepare students for future success.</p>
+                    <button onclick="window.open('http://blmschools.com.ng', '_blank')">View Project</button>
+                </div>
+            </div>
+            <div class="project">
+                <img src="https://raw.githubusercontent.com/olayinka036/olayinka036/main/Palax Solutions.png" alt="Palax Solutions WordPress homepage mockup with a finance banner">
+                <div class="project-content">
+                    <h3>Palax Solutions</h3>
+                    <p><strong>Homepage Description:</strong> The Palax Solutions homepage features a professional banner with a financial chart graphic and a "Get Started" button. The navigation bar links to Services, Testimonials, and Contact. A services section highlights wealth management and advisory with icons, followed by client testimonials and a contact form. The design uses a corporate WordPress theme with green and white colors.</p>
+                    <p><strong>About Palax Solutions:</strong> Palax Solutions is a financial services firm offering innovative solutions in wealth management, investment advisory, and financial planning. The company focuses on delivering tailored strategies to help clients achieve their financial goals with integrity and expertise.</p>
+                    <button onclick="window.open('https://palaxsolutions.com', '_blank')">View Project</button>
+                </div>
+            </div>
+            <div class="project">
+                <img src="https://raw.githubusercontent.com/olayinka036/olayinka036/main/Metrip.png" alt="Metrip WordPress homepage mockup with a travel banner">
+                <div class="project-content">
+                    <h3>Metrip</h3>
+                    <p><strong>Homepage Description:</strong> The Metrip homepage showcases a stunning beach destination banner with a "Book Now" button. The navigation includes Destinations, Bookings, and About. Sections below feature popular destinations with image cards, a booking form powered by a WordPress plugin, and customer reviews. The design uses a travel-focused WordPress theme with blue and orange accents.</p>
+                    <p><strong>About Metrip:</strong> Metrip is a travel agency that curates personalized travel experiences, offering services like flight bookings, hotel reservations, and guided tours. The company aims to make travel seamless and memorable for clients worldwide.</p>
+                    <button onclick="window.open('https://metrip.me', '_blank')">View Project</button>
+                </div>
+            </div>
+            <div class="project">
+                <img src="https://raw.githubusercontent.com/olayinka036/olayinka036/main/The Himmel.png" alt="The Himmel WordPress homepage mockup with an economics banner">
+                <div class="project-content">
+                    <h3>The Himmel</h3>
+                    <p><strong>Homepage Description:</strong> The Himmel homepage features a banner with a global economic map graphic and a "Read Latest Articles" button. The navigation bar links to Blog, Research, and About. A blog section displays recent posts with thumbnails, followed by a newsletter signup form and social media links. The design uses a minimal WordPress theme with blue and gray tones.</p>
+                    <p><strong>About The Himmel:</strong> The Himmel is a platform focused on economics, providing insightful articles, research, and analysis on global economic trends. It aims to educate and inform readers about financial systems and economic policies.</p>
+                    <button onclick="window.open('https://thehimmel.com', '_blank')">View Project</button>
+                </div>
+            </div>
+            <div class="project">
+                <img src="https://raw.githubusercontent.com/olayinka036/olayinka036/main/SF PROTECTIVE SERVICES.png" alt="SF Protective Services WordPress homepage mockup with a security banner">
+                <div class="project-content">
+                    <h3>SF Protective Services</h3>
+                    <p><strong>Homepage Description:</strong> The SF Protective Services homepage features a banner with a security guard image and a "Request a Quote" button. The navigation includes Services, Team, and Contact. Sections below highlight security services with icons, a team member showcase, and a contact form. The design uses a bold WordPress theme with black and yellow colors.</p>
+                    <p><strong>About SF Protective Services:</strong> SF Protective Services is a private security firm offering comprehensive security solutions, including armed and unarmed guards, surveillance, and risk assessments. The company prioritizes client safety and trust through professional services.</p>
+                    <button onclick="window.open('https://sf-protectiveservices.com', '_blank')">View Project</button>
+                </div>
+            </div>
+            <div class="project">
+                <img src="https://via.placeholder.com/200x150?text=Kakulus+Capital+Mockup" alt="Kakulus Capital WordPress homepage mockup with an investment banner">
+                <div class="project-content">
+                    <h3>Kakulus Capital</h3>
+                    <p><strong>Homepage Description:</strong> The Kakulus Capital homepage opens with a banner showing a financial growth chart and a "Invest With Us" button. The navigation bar links to Portfolio, Services, and Contact. A portfolio section showcases investment projects, followed by a services overview and a contact form. The design uses a professional WordPress theme with blue and gold accents.</p>
+                    <p><strong>About Kakulus Capital:</strong> Kakulus Capital is an investment firm in Nigeria, specializing in portfolio management, venture capital, and financial advisory services. The company is dedicated to driving wealth creation through strategic investments.</p>
+                    <button onclick="window.open('https://kakuluscapital.com.ng', '_blank')">View Project</button>
+                </div>
+            </div>
+            <div class="project">
+                <img src="https://raw.githubusercontent.com/olayinka036/olayinka036/main/LUNA SECURITY LTD.png" alt="Luna Security Ltd WordPress homepage mockup with a security banner">
                 <div class="project-content">
                     <h3>Luna Security Ltd</h3>
                     <p><strong>Homepage Description:</strong> The Luna Security Ltd homepage features a banner with a surveillance camera image and a "Secure Your Future" button. The navigation includes Services, About, and Contact. Sections below highlight security solutions with images, a team profile section, and a contact form. The design uses a sleek WordPress theme with black and silver tones.</p>
@@ -333,7 +303,7 @@
         </div>
     </div>
     <footer>
-        <p>© 2025 Olayinka Oseni. All rights reserved.</p>
+        <p>© 2025 Olayinka Oseni Yusuf. All rights reserved.</p>
     </footer>
 </body>
 </html>
