@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio of Olayinka Oseni Yusuf, a Graphic Designer, Web Developer, and IT Enthusiast based in Lagos, Nigeria.">
     <title>Olayinka Oseni Yusuf - Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
     <link rel="icon" type="image/png" href="https://via.placeholder.com/32x32?text=OY">
     <style>
         :root {
@@ -15,6 +16,7 @@
             --text-color: #333;
             --background-color: #f5f7fa;
             --card-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            --transition-speed: 0.3s;
         }
 
         body {
@@ -26,7 +28,8 @@
             background-size: 40px 40px;
             color: var(--text-color);
             scroll-behavior: smooth;
-            transition: background-color 0.3s ease, color 0.3s ease;
+            transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
+            line-height: 1.6;
         }
 
         body.dark-mode {
@@ -56,7 +59,7 @@
             border-radius: 50%;
             object-fit: cover;
             border: 3px solid var(--accent-color);
-            transition: transform 0.3s ease;
+            transition: transform var(--transition-speed) ease;
         }
 
         header img:hover {
@@ -73,6 +76,7 @@
         header p {
             font-size: 1.2rem;
             margin: 0.5rem 0 0;
+            opacity: 0.9;
         }
 
         .dark-mode-toggle {
@@ -84,11 +88,13 @@
             color: white;
             font-size: 1.5rem;
             cursor: pointer;
-            transition: transform 0.3s ease;
+            transition: transform var(--transition-speed) ease;
         }
 
-        .dark-mode-toggle:hover {
+        .dark-mode-toggle:hover,
+        .dark-mode-toggle:focus {
             transform: rotate(180deg);
+            outline: none;
         }
 
         nav {
@@ -112,13 +118,19 @@
             font-size: 1.1rem;
             padding: 0.5rem 1rem;
             border-radius: 20px;
-            transition: background-color 0.3s ease, transform 0.3s ease, color 0.3s ease;
+            transition: background-color var(--transition-speed) ease, transform var(--transition-speed) ease, color var(--transition-speed) ease;
         }
 
-        nav a:hover {
+        nav a:hover,
+        nav a:focus {
             background-color: var(--primary-color);
             color: white;
             transform: translateY(-2px);
+            outline: none;
+        }
+
+        body.dark-mode nav a {
+            color: #e0e0e0;
         }
 
         .container {
@@ -170,7 +182,7 @@
             padding: 1.5rem;
             border-radius: 12px;
             box-shadow: var(--card-shadow);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
         }
 
         body.dark-mode .project,
@@ -192,31 +204,10 @@
             border: 3px solid transparent;
             background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
             padding: 5px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
         }
 
         .project img:hover {
-            transform: scale(1.03);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        .video-placeholder {
-            width: 220px;
-            height: 124px;
-            border-radius: 10px;
-            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1rem;
-            text-align: center;
-            padding: 5px;
-            border: 3px solid transparent;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .video-placeholder:hover {
             transform: scale(1.03);
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
@@ -250,14 +241,21 @@
             cursor: pointer;
             font-size: 0.9rem;
             font-weight: bold;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
         }
 
         .project button:hover,
-        .video button:hover,
-        .download-button:hover {
+        .video button:focus,
+        .download-button:hover,
+        .download-button:focus {
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            outline: none;
+        }
+
+        .download-button.loading::after {
+            content: "...";
+            animation: loading 1s infinite;
         }
 
         .skills {
@@ -272,10 +270,11 @@
             padding: 0.6rem 1.2rem;
             border-radius: 20px;
             font-size: 0.9rem;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
         }
 
-        .skill:hover {
+        .skill:hover,
+        .skill:focus {
             transform: translateY(-2px);
             box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
         }
@@ -285,8 +284,6 @@
             color: white;
             text-align: center;
             padding: 1.5rem;
-            position: relative;
-            bottom: 0;
             width: 100%;
         }
 
@@ -298,12 +295,14 @@
             color: white;
             font-size: 1.5rem;
             margin: 0 0.5rem;
-            transition: transform 0.3s ease, color 0.3s ease;
+            transition: transform var(--transition-speed) ease, color var(--transition-speed) ease;
         }
 
-        footer .social-links a:hover {
+        footer .social-links a:hover,
+        footer .social-links a:focus {
             transform: scale(1.2);
             color: var(--accent-color);
+            outline: none;
         }
 
         .back-to-top {
@@ -319,17 +318,25 @@
             font-size: 1.5rem;
             cursor: pointer;
             display: none;
-            transition: background-color 0.3s ease, transform 0.3s ease;
+            transition: background-color var(--transition-speed) ease, transform var(--transition-speed) ease;
         }
 
-        .back-to-top:hover {
+        .back-to-top:hover,
+        .back-to-top:focus {
             background: var(--secondary-color);
             transform: scale(1.1);
+            outline: none;
         }
 
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
+        }
+
+        @keyframes loading {
+            0% { content: "."; }
+            33% { content: ".."; }
+            66% { content: "..."; }
         }
 
         @media (max-width: 768px) {
@@ -364,8 +371,7 @@
                 gap: 1rem;
                 padding: 1rem;
             }
-            .project img,
-            .video-placeholder {
+            .project img {
                 width: 100%;
                 max-width: 300px;
             }
@@ -395,8 +401,7 @@
             .section {
                 padding: 1.5rem;
             }
-            .project img,
-            .video-placeholder {
+            .project img {
                 max-width: 100%;
             }
             .project button,
@@ -414,46 +419,14 @@
     </style>
 </head>
 <body>
-    <script type="text/javascript">
-        var gk_isXlsx = false;
-        var gk_xlsxFileLookup = {};
-        var gk_fileData = {};
-        function filledCell(cell) {
-          return cell !== '' && cell != null;
-        }
-        function loadFileData(filename) {
-        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
-            try {
-                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
-                var firstSheetName = workbook.SheetNames[0];
-                var worksheet = workbook.Sheets[firstSheetName];
-                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
-                var filteredData = jsonData.filter(row => row.some(filledCell));
-                var headerRowIndex = filteredData.findIndex((row, index) =>
-                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
-                );
-                if (headerRowIndex === -1 || headerRowIndex > 25) {
-                  headerRowIndex = 0;
-                }
-                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex));
-                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
-                return csv;
-            } catch (e) {
-                console.error(e);
-                return "";
-            }
-        }
-        return gk_fileData[filename] || "";
-        }
-    </script>
     <header>
-        <img src="https://raw.githubusercontent.com/Olayinka036/portfolio/main/Olayinka_Oseni.png" alt="Olayinka Oseni Yusuf in a black jacket and black roundneck with a blurred background">
+        <img src="https://raw.githubusercontent.com/Olayinka036/portfolio/main/Olayinka_Oseni.png" alt="Olayinka Oseni Yusuf in a black jacket and black roundneck with a blurred background" loading="lazy">
         <div>
             <h1>Olayinka Oseni</h1>
             <p>Graphic Designer | Web Developer | IT Enthusiast</p>
         </div>
         <button class="dark-mode-toggle" aria-label="Toggle dark mode">
-            <i class="fas fa-moon"></i>
+            <i class="fas fa-moon" aria-hidden="true"></i>
         </button>
     </header>
     <nav>
@@ -464,28 +437,28 @@
         <a href="#contact">Contact</a>
     </nav>
     <div class="container">
-        <div class="section" id="about">
+        <section class="section" id="about">
             <h2>About Me</h2>
             <p>I’m a multi-skilled creative and IT professional based in Lagos, Nigeria, with over 4 years of hands-on experience in graphic design, WordPress website development, IT support, and computer networking.</p>
             <p>I started my journey at Ilupeju Senior Secondary School, continued with foundational computer training at the ELP program (TREM), and I'm currently pursuing a B.Sc. in Public Administration. I'm also a chartered member of the Institute of Local Government and Public Administration of Nigeria.</p>
             <p>My passion lies in blending visual creativity with smart technology—designing everything from logos and flyers to responsive WordPress websites, while managing digital systems and networks through tools like cPanel, HTML, and CSS.</p>
             <p>I’ve earned multiple certifications with Cisco (Cybersecurity, Networking Basics, and more), and continue to grow my skills in frontend development and digital infrastructure.</p>
             <p>📌 Tools & Skills: Adobe Photoshop, Illustrator, CorelDRAW, WordPress, Elementor, HTML, and CSS, Figma, cPanel, MS Word, MS PowerPoint, MS Excel</p>
-        </div>
-        <div class="section" id="skills">
+        </section>
+        <section class="section" id="skills">
             <h2>Skills</h2>
             <div class="skills">
-                <span class="skill">Graphic Design</span>
-                <span class="skill">WordPress & Elementor</span>
-                <span class="skill">HTML/CSS</span>
-                <span class="skill">cPanel Hosting & Email Management</span>
-                <span class="skill">Computer Networking and IT Support</span>
-                <span class="skill">Microsoft Office (Word, PowerPoint, Excel)</span>
-                <span class="skill">Motion Graphics</span>
-                <span class="skill">Remote Collaboration</span>
+                <span class="skill" tabindex="0">Graphic Design</span>
+                <span class="skill" tabindex="0">WordPress & Elementor</span>
+                <span class="skill" tabindex="0">HTML/CSS</span>
+                <span class="skill" tabindex="0">cPanel Hosting & Email Management</span>
+                <span class="skill" tabindex="0">Computer Networking and IT Support</span>
+                <span class="skill" tabindex="0">Microsoft Office (Word, PowerPoint, Excel)</span>
+                <span class="skill" tabindex="0">Motion Graphics</span>
+                <span class="skill" tabindex="0">Remote Collaboration</span>
             </div>
-        </div>
-        <div class="section" id="projects">
+        </section>
+        <section class="section" id="projects">
             <h2>Projects</h2>
             <div class="project">
                 <img src="https://raw.githubusercontent.com/Olayinka036/portfolio/main/Chelsea Autos.png" alt="Chelsea Autos WordPress homepage mockup with a car banner" loading="lazy">
@@ -550,11 +523,10 @@
                     <button onclick="window.open('https://lunasecurityltd.com', '_blank')">View Project</button>
                 </div>
             </div>
-        </div>
-        <div class="section" id="motion-videos">
+        </section>
+        <section class="section" id="motion-videos">
             <h2>Motion Videos</h2>
             <div class="video">
-                <div class="video-placeholder">Video Placeholder</div>
                 <div class="video-content">
                     <h3>Tech Startup Product Launch</h3>
                     <p>A 30-second motion graphic showcasing a product launch for a tech startup, featuring smooth transitions and vibrant animations to highlight key features.</p>
@@ -562,7 +534,6 @@
                 </div>
             </div>
             <div class="video">
-                <div class="video-placeholder">Video Placeholder</div>
                 <div class="video-content">
                     <h3>Dynamic Brand Intro</h3>
                     <p>A 15-second brand introduction video with dynamic text animations and a sleek logo reveal, designed for a financial services company.</p>
@@ -570,15 +541,6 @@
                 </div>
             </div>
             <div class="video">
-                <div class="video-placeholder">Video Placeholder</div>
-                <div class="video-content">
-                    <h3>Educational Explainer</h3>
-                    <p>A 1-minute explainer video for an educational platform, using animated characters and infographics to simplify complex concepts.</p>
-                    <button onclick="window.open('https://youtube.com/shorts/Np8OETgWdvA?feature=share', '_blank')">Watch Video</button>
-                </div>
-            </div>
-            <div class="video">
-                <div class="video-placeholder">Video Placeholder</div>
                 <div class="video-content">
                     <h3>Event Promotion</h3>
                     <p>A short promotional video for an upcoming event, featuring energetic animations and bold text to grab attention.</p>
@@ -586,15 +548,6 @@
                 </div>
             </div>
             <div class="video">
-                <div class="video-placeholder">Video Placeholder</div>
-                <div class="video-content">
-                    <h3>Social Media Ad</h3>
-                    <p>A quick 10-second ad for social media, showcasing a product with fast-paced transitions and a catchy tagline.</p>
-                    <button onclick="window.open('https://youtube.com/shorts/ubjtxp_BF90?feature=share', '_blank')">Watch Video</button>
-                </div>
-            </div>
-            <div class="video">
-                <div class="video-placeholder">Video Placeholder</div>
                 <div class="video-content">
                     <h3>App Walkthrough</h3>
                     <p>A 20-second motion graphic walking through the features of a mobile app, with clean animations and a modern design.</p>
@@ -602,15 +555,6 @@
                 </div>
             </div>
             <div class="video">
-                <div class="video-placeholder">Video Placeholder</div>
-                <div class="video-content">
-                    <h3>Logo Animation</h3>
-                    <p>A 15-second logo animation with a sleek reveal effect, designed for a startup’s branding package.</p>
-                    <button onclick="window.open('https://youtube.com/shorts/FX4sneFRzhY?feature=share', '_blank')">Watch Video</button>
-                </div>
-            </div>
-            <div class="video">
-                <div class="video-placeholder">Video Placeholder</div>
                 <div class="video-content">
                     <h3>Service Explainer</h3>
                     <p>A 30-second explainer video for a service-based company, using simple animations to highlight benefits.</p>
@@ -618,15 +562,6 @@
                 </div>
             </div>
             <div class="video">
-                <div class="video-placeholder">Video Placeholder</div>
-                <div class="video-content">
-                    <h3>Testimonial Animation</h3>
-                    <p>A short animated testimonial video, featuring customer quotes with smooth text transitions.</p>
-                    <button onclick="window.open('https://youtube.com/shorts/kbP8TRk0oH0?feature=share', '_blank')">Watch Video</button>
-                </div>
-            </div>
-            <div class="video">
-                <div class="video-placeholder">Video Placeholder</div>
                 <div class="video-content">
                     <h3>Corporate Intro</h3>
                     <p>A professional 1-minute intro video for a corporate client, with elegant animations and a polished look.</p>
@@ -634,7 +569,6 @@
                 </div>
             </div>
             <div class="video">
-                <div class="video-placeholder">Video Placeholder</div>
                 <div class="video-content">
                     <h3>Nonprofit Campaign</h3>
                     <p>A 2-minute video for a nonprofit campaign, using heartfelt animations to convey the mission.</p>
@@ -642,7 +576,6 @@
                 </div>
             </div>
             <div class="video">
-                <div class="video-placeholder">Video Placeholder</div>
                 <div class="video-content">
                     <h3>E-commerce Promo</h3>
                     <p>A 1-minute promotional video for an e-commerce platform, showcasing products with vibrant animations.</p>
@@ -650,7 +583,6 @@
                 </div>
             </div>
             <div class="video">
-                <div class="video-placeholder">Video Placeholder</div>
                 <div class="video-content">
                     <h3>Fitness Brand Ad</h3>
                     <p>A dynamic 1-minute ad for a fitness brand, featuring energetic animations and motivational text.</p>
@@ -658,66 +590,53 @@
                 </div>
             </div>
             <div class="video">
-                <div class="video-placeholder">Video Placeholder</div>
-                <div class="video-content">
-                    <h3>Restaurant Promo</h3>
-                    <p>A 1-minute promotional video for a restaurant, with appetizing visuals and smooth transitions.</p>
-                    <button onclick="window.open('https://youtu.be/wGSmpZOo3UQ', '_blank')">Watch Video</button>
-                </div>
-            </div>
-            <div class="video">
-                <div class="video-placeholder">Video Placeholder</div>
-                <div class="video-content">
-                    <h3>Travel Agency Ad</h3>
-                    <p>A 1-minute ad for a travel agency, showcasing stunning destinations with animated transitions.</p>
-                    <button onclick="window.open('https://youtu.be/Gq9zhjldpYM', '_blank')">Watch Video</button>
-                </div>
-            </div>
-            <div class="video">
-                <div class="video-placeholder">Video Placeholder</div>
                 <div class="video-content">
                     <h3>Event Recap</h3>
                     <p>A 2-minute recap video of a corporate event, featuring highlights with animated text overlays.</p>
                     <button onclick="window.open('https://youtu.be/CZi7yK62C3I', '_blank')">Watch Video</button>
                 </div>
             </div>
-        </div>
-        <div class="section" id="contact">
+        </section>
+        <section class="section" id="contact">
             <h2>Contact</h2>
-            <p>Email: olayinka30.oseni@gmail.com</p>
-            <p>Phone: +234-906-481-4414</p>
-            <p>LinkedIn: <a href="https://linkedin.com/in/olayinka-oseni-yusuf30" target="_blank">linkedin.com/in/olayinka-oseni-yusuf30</a></p>
-            <p><a href="https://drive.google.com/uc?export=download&id=1O1lRbcUDI3WPuyVlcswCcPqXECtzBg4M" download class="download-button">Download Graphics Portfolio (PDF)</a></p>
-        </div>
+            <p>Email: <a href="mailto:olayinka30.oseni@gmail.com">olayinka30.oseni@gmail.com</a></p>
+            <p>Phone: <a href="tel:+2349064814414">+234-906-481-4414</a></p>
+            <p>LinkedIn: <a href="https://linkedin.com/in/olayinka-oseni-yusuf30" target="_blank" rel="noopener noreferrer">linkedin.com/in/olayinka-oseni-yusuf30</a></p>
+            <p><a href="https://drive.google.com/uc?export=download&id=1O1lRbcUDI3WPuyVlcswCcPqXECtzBg4M" download class="download-button" id="download-pdf">Download Graphics Portfolio (PDF)</a></p>
+        </section>
     </div>
     <footer>
         <p>© 2025 Olayinka Oseni Yusuf. All rights reserved.</p>
         <div class="social-links">
-            <a href="https://linkedin.com/in/olayinka-oseni-yusuf30" target="_blank" aria-label="LinkedIn">
-                <i class="fab fa-linkedin"></i>
+            <a href="https://linkedin.com/in/olayinka-oseni-yusuf30" target="_blank" rel="noopener noreferrer" aria-label="Visit my LinkedIn profile">
+                <i class="fab fa-linkedin" aria-hidden="true"></i>
             </a>
         </div>
     </footer>
     <button class="back-to-top" aria-label="Back to top">
-        <i class="fas fa-chevron-up"></i>
+        <i class="fas fa-chevron-up" aria-hidden="true"></i>
     </button>
-    <script>
+    <script defer>
         // Dark Mode Toggle
         const toggleButton = document.querySelector('.dark-mode-toggle');
         toggleButton.addEventListener('click', () => {
             document.body.classList.toggle('dark-mode');
-            toggleButton.querySelector('i').classList.toggle('fa-moon');
-            toggleButton.querySelector('i').classList.toggle('fa-sun');
+            const icon = toggleButton.querySelector('i');
+            icon.classList.toggle('fa-moon');
+            icon.classList.toggle('fa-sun');
+            localStorage.setItem('dark-mode', document.body.classList.contains('dark-mode'));
         });
+
+        // Load dark mode preference
+        if (localStorage.getItem('dark-mode') === 'true') {
+            document.body.classList.add('dark-mode');
+            toggleButton.querySelector('i').classList.replace('fa-moon', 'fa-sun');
+        }
 
         // Back to Top Button
         const backToTopButton = document.querySelector('.back-to-top');
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 300) {
-                backToTopButton.style.display = 'block';
-            } else {
-                backToTopButton.style.display = 'none';
-            }
+            backToTopButton.style.display = window.scrollY > 300 ? 'block' : 'none';
         });
 
         backToTopButton.addEventListener('click', () => {
@@ -732,7 +651,7 @@
             threshold: 0.1
         };
 
-        const observer = new IntersectionObserver((entries, observer) => {
+        const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
@@ -740,9 +659,46 @@
             });
         }, observerOptions);
 
-        sections.forEach(section => {
-            observer.observe(section);
+        sections.forEach(section => observer.observe(section));
+
+        // PDF Download Loading State
+        const downloadButton = document.getElementById('download-pdf');
+        downloadButton.addEventListener('click', () => {
+            downloadButton.classList.add('loading');
+            setTimeout(() => downloadButton.classList.remove('loading'), 3000);
         });
+    </script>
+    <script type="text/javascript">
+        var gk_isXlsx = false;
+        var gk_xlsxFileLookup = {};
+        var gk_fileData = {};
+        function filledCell(cell) {
+            return cell !== '' && cell != null;
+        }
+        function loadFileData(filename) {
+            if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+                try {
+                    var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+                    var firstSheetName = workbook.SheetNames[0];
+                    var worksheet = workbook.Sheets[firstSheetName];
+                    var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+                    var filteredData = jsonData.filter(row => row.some(filledCell));
+                    var headerRowIndex = filteredData.findIndex((row, index) =>
+                        row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+                    );
+                    if (headerRowIndex === -1 || headerRowIndex > 25) {
+                        headerRowIndex = 0;
+                    }
+                    var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex));
+                    csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+                    return csv;
+                } catch (e) {
+                    console.error(e);
+                    return "";
+                }
+            }
+            return gk_fileData[filename] || "";
+        }
     </script>
 </body>
 </html>
